@@ -2,6 +2,7 @@ import React, { useState, FC, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
+import image from '../resources/logo.png';
 
 interface Props {
 }
@@ -52,31 +53,23 @@ export const Home: FC<Props> = () => {
       style={{ height: "100vh", width: "100vw", display: "flex", alignItems: 'center', justifyContent: 'center', backgroundColor: "#5CDB95" }}
     >
       <div style={{ 
-        height: "60vh", width: "30vw", 
+        height: "80vh", width: "20vw", 
         backgroundColor: '#EDF5E1', 
-        border: "solid #000", borderWidth: "1 1px",
+        borderRadius: 20,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-around",
         flexDirection: "column"
       }}>
-        {
-          loginFormType
-            ?
-            <h1>
-              Please login below
-            </h1>
-            :
-            <h1>
-              Please register below
-            </h1>
-        }
+        <div style={{ flex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <img src={image} width={221} height={146}/>
+        </div>
         <div style={{ 
-          height: "30%", width: "50%",
+          flex: 1,
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-around",
-          flexDirection: "column"
+          justifyContent: "center",
+          flexDirection: "column",
          }}>
         <TextField
           required
@@ -97,32 +90,31 @@ export const Home: FC<Props> = () => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             setPassword(event.target.value);
           }}
+          style={{ marginTop: 30 }}
         />
         </div>
         {
           loginFormType 
             ?
               <div style={{
-                height: "20%",
-                width: "50%",
+                flex: 1,
                 display: "flex",
                 justifyContent: "space-around",
                 alignItems: "center",
-                flexDirection: "column"
+                flexDirection: "column",
               }}>
-                <Button variant="contained" style={{ marginTop: 10 }} onClick={login}>Login</Button>
+                <Button variant="contained" style={{ marginTop: 10, width: 250 }} onClick={login} size="large">Login</Button>
                 <div onClick={switchForm}>Don't have an account? Register now!</div>
               </div>
             :
               <div style={{
-                height: "20%",
-                width: "50%",
+                flex: 1,
                 display: "flex",
                 justifyContent: "space-around",
                 alignItems: "center",
                 flexDirection: "column"
               }}>
-                <Button variant="contained" style={{ marginTop: 10 }} onClick={register}>Register</Button>
+                <Button variant="contained" style={{ marginTop: 10, width: 250}} onClick={register} size="large">Register</Button>
                 <div onClick={switchForm}>Already have an account? Login now!</div>
             </div>
         }

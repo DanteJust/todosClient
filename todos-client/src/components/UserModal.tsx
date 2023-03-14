@@ -2,6 +2,7 @@ import Modal from '@mui/material/Modal';
 import axios, { AxiosResponse } from 'axios';
 import React, { FC, useEffect, useState } from 'react';
 import { UserI } from '../types/types';
+import { DenseTable } from './DenseTable';
 
 interface Props {
     open: boolean;
@@ -43,18 +44,7 @@ export const UserModal: FC<Props> = ({ open, setOpen }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >
-            <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 400,
-                maxHeight: 200,
-                backgroundColor: 'green',
-                border: '2px solid #000',
-                overflowY: 'scroll',
-                padding: 10
-            }}
+            <div className='absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-10/12 max-h-min bg-emerald-900 border-2 border-solid border-black p-2 overflow-y-scroll'
             >
             {
                 users === undefined
@@ -62,22 +52,7 @@ export const UserModal: FC<Props> = ({ open, setOpen }) => {
                     <div>Not yet!</div>
                     :
                     <div>
-                        {
-                            users.map((user: UserI, iterator: number) => {
-                                return(
-                                    <div key={iterator} style={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <div style={{ color: 'yellow', marginBottom: 5 }}>User number {iterator + 1}:</div>
-                                        <div style={{ color: 'white' }}>Username: {user.username}</div>
-                                        <div style={{ marginBottom: 10, color: 'white' }}>Id: {user._id}</div>
-                                    </div>
-                                )
-                            })
-                        }
+                        <DenseTable users={users}/>
                     </div>
             }
             </div>

@@ -21,17 +21,17 @@ export const Hub: FC<Props> = () => {
     }, []);
 
     return(
-        <div style={{ width: "100vw", height: "100vh", backgroundColor: "#5CDB95", display: "flex" }}
+        <div className='h-screen w-screen flex bg-emerald-900'
         >
             {
                 token === ""
                     ?
                     <h1>Access denied!</h1>
                     :
-                    <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: 'center', flexDirection: 'column' }}>
+                    <div className='h-screen w-screen flex items-center flex-col'>
                         <h1>Welcome to the hub!</h1>
                         <h2>Users</h2>
-                        <div style={{ width: "80vw", height: "20vh", display: "flex", alignItems: "center", flexDirection: 'row', justifyContent: 'center' }}>
+                        <div className='w-10/12 h-1/4 flex items-center flex-row justify-center'>
                             <Button onClick={() => setOpen(!open)}>Show users</Button>
                         </div>
                         <UserModal open={open} setOpen={setOpen}/>

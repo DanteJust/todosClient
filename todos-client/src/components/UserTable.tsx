@@ -12,7 +12,7 @@ interface Props {
     users: UserI[]
 }
 
-export const DenseTable: FC<Props> = ({ users }) => {
+export const UserTable: FC<Props> = ({ users }) => {
 
   return (
     <TableContainer component={Paper}>

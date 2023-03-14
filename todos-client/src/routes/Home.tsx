@@ -1,8 +1,8 @@
 import React, { useState, FC, useEffect } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, createStyles } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
-import image from '../resources/logo.png';
+import image from '../resources/logo-transparent2.png';
 
 interface Props {
 }
@@ -59,6 +59,7 @@ export const Home: FC<Props> = () => {
           <TextField
             required
             value={username}
+            variant="filled"
             id="outlined-required"
             label="Username"
             placeholder="ex: peter123"
@@ -70,19 +71,22 @@ export const Home: FC<Props> = () => {
             required
             value={password}
             id="outlined-required"
+            type="password"
             label="Password"
+            variant="filled"
             placeholder="ex: secret"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setPassword(event.target.value);
             }}
             style={{ marginTop: 30 }}
+            // sx={{ input: { color: 'red' } }}
           />
         </div>
         {
           loginFormType 
             ?
               <div className='h-1/4 flex justify-around items-center flex-col'>
-                <Button variant="contained" style={{ marginTop: 10, width: 250 }} onClick={login} size="large">Login</Button>
+                <Button variant="contained" style={{ marginTop: 10, width: 250, backgroundColor: '#064e3b' }} onClick={login} size="large">Login</Button>
                 <div onClick={switchForm}>Don't have an account? Register now!</div>
               </div>
             :
